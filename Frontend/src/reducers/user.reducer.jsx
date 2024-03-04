@@ -1,8 +1,9 @@
-import { USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, LOGOUT_USER } from '../actions/user.action';
+import { USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, LOGOUT_USER, USER_PROFILE, UPDATE_USER_NAME } from '../actions/user.action';
 
 const initialState = {
   token: null,
   loginError: null,
+  userProfile: '',
 };
 
 const userReducer = (state = initialState, action) => {
@@ -24,7 +25,19 @@ const userReducer = (state = initialState, action) => {
         ...state,
         token: null,
         loginError: null,
+        userProfile: '',
       };
+      case USER_PROFILE:
+        return {
+          ...state,
+          userProfile: action.payload,
+        };
+        case UPDATE_USER_NAME:
+          const newProfile = { ...state.userProfile, userName: action.payload };
+          return {
+            ...state,
+            userProfile: newProfile,
+          };
     default:
       return state;
   }
