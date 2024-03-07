@@ -19,9 +19,12 @@ export const userLoginFailure = (error) => ({
 });
 
 // Action pour déconnecter l'utilisateur
-export const logoutUser = () => ({
-  type: LOGOUT_USER,
-});
+export const logoutUser = () => {
+  localStorage.removeItem('token');
+    return {
+    type: LOGOUT_USER,
+  };
+};
 
 
 // Action pour gérer la connexion de l'utilisateur
@@ -38,10 +41,11 @@ export const loginUser = (email, password, onSignInSuccess, rememberMe) => {
 
       if (response.status === 200) {
         const token = response.data.body.token; // Extrait le token de la réponse du serveur
+        dispatch(userLoginSuccess(token));
         if(rememberMe){
           localStorage.setItem('token', token);
         }
-        dispatch(userLoginSuccess(token));  //dispatch action de loginsuccess, avec le token comme payload.
+        
         onSignInSuccess();
       } 
     } catch (error) {

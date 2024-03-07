@@ -101,6 +101,116 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /transactions/current-month:
+    get:
+      tags:
+        - Transaction Module
+      summary: Retrieves a list of all transactions for the current month
+      responses:
+        '200':
+          description: List of transactions successfully retrieved
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
+        '500':
+          description: Internal Server Error        
+  /transactions/{transactionId}:
+    get:
+      tags:
+        - Transaction Module
+      summary: Retrieves specific details of a transaction
+      responses:
+        '200':
+          description: Transaction details successfully retrieved
+          schema:
+            $ref: '#/definitions/Transaction'
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: The unique identifier of the transaction
+          type: string
+  /transactions/{transactionId}/category:
+    put:
+      tags:
+        - Transaction Module
+      summary: Edits the category of a transaction
+      responses:
+        '200':
+          description: Transaction category updated successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: The unique identifier of the transaction to edit
+          type: string
+        - name: category
+          in: body
+          required: true
+          description: New category for the transaction
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+  /transactions/{transactionId}/note:
+    put:
+      tags:
+        - Transaction Module
+      summary: Adds a personal note to a transaction
+      responses:
+        '200':
+          description: Personal note added to the transaction successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: The unique identifier of the transaction to add a note to
+          type: string
+        - name: note
+          in: body
+          required: true
+          description: Personal note to add to the transaction
+          schema:
+            type: object
+            properties:
+              note:
+                type: string
+  /transactions/{transactionId}:
+    delete:
+      tags:
+        - Transaction Module
+      summary: Deletes a transaction
+      responses:
+        '200':
+          description: Transaction successfully deleted
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: The unique identifier of the transaction to delete
+          type: string    
 securityDefinitions:
   Bearer:
     type: apiKey
