@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserName } from '../../actions/user.action';
 import './editName.css';
@@ -8,14 +8,18 @@ const EditName = ({ setIsEditing }) => {
   const userProfile = useSelector((state) => state.user.userProfile);
   const [newUserName, setNewUserName] = useState('');
 
+
+  //// Fonction pour gérer la mise à jour du nom d'utilisateur.
   const handleUpdateUserName = async () => {
+    // si newUserName a une valeur
     if (newUserName) {
       dispatch(updateUserName(newUserName));
-      setIsEditing(false);
+      setIsEditing(false);    //on quitte le mode édition et réinitialisons la valeur de newUserName.
       setNewUserName('');
     }
   };
-
+   
+  //pour annuler l'édition
   const handleCancel = () => {
     setIsEditing(false);
     setNewUserName('');
