@@ -1,4 +1,3 @@
-import React from 'react';
 import '../Feature/feature.css';
 
 const Feature = ({ title, content, imageSrc, altText }) => {

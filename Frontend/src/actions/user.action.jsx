@@ -96,11 +96,10 @@ export const fetchUserProfile = () => {
 
 export const updateUserName = (userName) => {
   return async (dispatch, getState) => {
-    const token = getState().user.token;        //On accède à l'état actuel de l'application pour obtenir le token d'authentification de l'utilisateur.
+    const token = getState().user.token;                         //On accède à l'état actuel de l'application pour obtenir le token d'authentification de l'utilisateur.
     if (!token) {
       return;
     }
-
     try {
       const response = await axios.put(                            // on envoie une requête PUT au serveur pour mettre à jour le nom d'utilisateur.
         'http://localhost:3001/api/v1/user/profile',
@@ -111,11 +110,8 @@ export const updateUserName = (userName) => {
           },
         }
       );
-
-      console.log(response);
-
       if (response.status === 200) {
-        dispatch({                                      //On dispatche l'action UPDATE_USER_NAME avec le nouveau userName pour actualiser l'état de l'app par le reducer."
+        dispatch({                                                   //On dispatche l'action UPDATE_USER_NAME avec le nouveau userName pour actualiser l'état de l'app par le reducer."
           type: UPDATE_USER_NAME,
           payload: userName,
         });

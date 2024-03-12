@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './form.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../actions/user.action';
 import { useNavigate } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
 const Form = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +28,7 @@ const Form = () => {
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
-        <i className="fa fa-user-circle sign-in-icon"></i>
+      <FontAwesomeIcon icon={faUserCircle}  className="icon-user-circle" />
         <h1>Sign In</h1>
         <form onSubmit={handleSignIn}>           
           <div className="input-wrapper">

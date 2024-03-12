@@ -9,7 +9,7 @@ const EditName = ({ setIsEditing }) => {
   const [newUserName, setNewUserName] = useState('');
 
 
-  //// Fonction pour gérer la mise à jour du nom d'utilisateur.
+  // Fonction pour gérer la mise à jour du nom d'utilisateur.
   const handleUpdateUserName = async () => {
     // si newUserName a une valeur
     if (newUserName) {
@@ -33,9 +33,10 @@ const EditName = ({ setIsEditing }) => {
         <input
           type="text"
           id="newUserName"
-          placeholder="Enter New Username"
+          placeholder={userProfile.userName}
           value={newUserName}
           onChange={(e) => setNewUserName(e.target.value)}
+          required
         />
       </div>
       <div>

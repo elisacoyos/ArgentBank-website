@@ -1,4 +1,3 @@
-import React from 'react';
 import './account.css';
 
 const Account = ({ title, amount, description }) => {

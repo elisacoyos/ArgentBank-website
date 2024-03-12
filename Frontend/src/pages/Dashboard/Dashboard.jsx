@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import Account from '../../components/Account/Account';
 import HeaderAccount from '../../components/HeaderAccount/HeaderAccount';

@@ -6,6 +6,9 @@ import './navbar.css';
 import { logoutUser } from '../../actions/user.action';
 import { fetchUserProfile } from '../../actions/user.action';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle} from '@fortawesome/free-solid-svg-icons';
+
 
 const Navbar = () => {
   const token = useSelector((state) => state.user.token);
@@ -33,12 +36,11 @@ const Navbar = () => {
           <h1 className='sr-only'>Argent Bank</h1>
         </NavLink>
         <div className='navbar_loginSuccess'>
-          <NavLink to='/user-account' className='main-nav-item'>
-            <i className='fa fa-user-circle'></i>
+          <NavLink to='/user' className='main-nav-item'>
             {userProfile.userName}
           </NavLink>
           <NavLink to='/' className='main-nav-item' onClick={handleSignOut}>
-            <i className='fa fa-sign-out'></i>
+          <FontAwesomeIcon icon={faUserCircle} className="icon-navbar"/>
             Sign Out
           </NavLink>
         </div>
@@ -53,7 +55,7 @@ const Navbar = () => {
         </NavLink>
         <div>
           <NavLink to='/login' className='main-nav-item'>
-            <i className='fa fa-user-circle'></i>
+          <FontAwesomeIcon icon={faUserCircle} />
             Sign In
           </NavLink>
         </div>

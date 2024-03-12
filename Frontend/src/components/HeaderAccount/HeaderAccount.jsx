@@ -6,11 +6,11 @@ import EditName from '../../components/EditName/EditName'
 
 const HeaderAccount = () => {
   const dispatch = useDispatch();
-  const userProfile = useSelector((state) => state.user.userProfile);
+  const userProfile = useSelector((state) => state.user.userProfile);  //On déclare la variable userProfile pour accéder à la valeur de userProfile dans le reducer avec useSelector.
   const [isEditing, setIsEditing] = useState(false);   // État pour contrôler si le formulaire d'édition de nom est affiché ou non.
 
   useEffect(() => {
-    dispatch(fetchUserProfile());
+    dispatch(fetchUserProfile());  //Le useEffect assure que l'action fetchUserProfile() soit appelée juste après que le composant soit rendu et non avant.
   }, [dispatch]);
 
   return (

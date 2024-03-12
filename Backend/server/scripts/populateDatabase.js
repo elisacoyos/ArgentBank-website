@@ -1,4 +1,4 @@
-const axios = require('axios')
+import { post } from 'axios'
 const signupApi = 'http://localhost:3001/api/v1/user/signup'
 
 const users = [
@@ -19,8 +19,7 @@ const users = [
 ]
 
 users.forEach(user => {
-  axios
-    .post(signupApi, user)
+  post(signupApi, user)
     .then(response => console.log(response))
     .catch(error => console.log(error))
 })
