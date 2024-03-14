@@ -11,9 +11,9 @@ const EditName = ({ setIsEditing }) => {
 
   // Fonction pour gérer la mise à jour du nom d'utilisateur.
   const handleUpdateUserName = async () => {
-    // si newUserName a une valeur
-    if (newUserName) {
-      dispatch(updateUserName(newUserName));
+    const trimmedUserName = newUserName.trim(); 
+    if (trimmedUserName.length > 0) {
+      dispatch(updateUserName(trimmedUserName));
       setIsEditing(false);    //on quitte le mode édition et réinitialisons la valeur de newUserName.
       setNewUserName('');
     }

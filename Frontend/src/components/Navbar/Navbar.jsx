@@ -7,7 +7,7 @@ import { logoutUser } from '../../actions/user.action';
 import { fetchUserProfile } from '../../actions/user.action';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
 
 const Navbar = () => {
@@ -37,10 +37,11 @@ const Navbar = () => {
         </NavLink>
         <div className='navbar_loginSuccess'>
           <NavLink to='/user' className='main-nav-item'>
+          <FontAwesomeIcon icon={faUserCircle} className="icon-navbar"/>
             {userProfile.userName}
           </NavLink>
           <NavLink to='/' className='main-nav-item' onClick={handleSignOut}>
-          <FontAwesomeIcon icon={faUserCircle} className="icon-navbar"/>
+          <FontAwesomeIcon icon={faSignOutAlt} />
             Sign Out
           </NavLink>
         </div>

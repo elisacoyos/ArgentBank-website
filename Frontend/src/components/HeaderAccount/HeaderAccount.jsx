@@ -19,7 +19,7 @@ const HeaderAccount = () => {
         <EditName setIsEditing={setIsEditing} />    //Si isEditing est vrai, on affiche EditName avec setIsEditing pour changer isEditing.
       ) : (
         <>
-          <h1>Welcome back<br />{userProfile.userName} !</h1>
+          <h1>Welcome back<br />{`${userProfile.firstName} ${userProfile.lastName}`} !</h1>
           <button className="edit-button" onClick={() => setIsEditing(true)}>Edit Name</button>   
           <h2 className="sr-only">Accounts</h2>         
         </>                                      //quand on click sur le bouton, on change l'état de isEditing à true pour afficher EditName.                                            
